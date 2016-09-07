@@ -8,8 +8,9 @@ License:        AMD EULA
 URL:            http://www.amd.com
 Source0:        https://www2.ati.com/drivers/linux/amdgpu-pro_%{version}-%{release}.tar.xz
 ExclusiveArch:  x86_64
-
 Summary:        AMDGPU-PRO OpenCL ICD library
+
+BuildRequires:	chrpath
 
 %description
 This is the OpenCL ICD library from AMDGPU-PRO.
@@ -30,6 +31,7 @@ mkdir libdrm-amdgpu-pro-amdgpu1_%{version}-%{release}_amd64
 cd libdrm-amdgpu-pro-amdgpu1_%{version}-%{release}_amd64
 ar x ../libdrm-amdgpu-pro-amdgpu1_%{version}-%{release}_amd64.deb
 tar -C . -xf data.tar.xz
+chrpath -d usr/lib/x86_64-linux-gnu/amdgpu-pro/libdrm_amdgpu.so.1.0.0
 install -D usr/lib/x86_64-linux-gnu/amdgpu-pro/libdrm_amdgpu.so.1.0.0 %{buildroot}%{_libdir}/%{name}/libdrm_amdgpo.so.1.0.0
 cd ..
 
